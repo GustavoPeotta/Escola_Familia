@@ -103,21 +103,21 @@ public class Inicio extends JFrame {
         btn_add_proj = new javax.swing.JMenuItem();
         btn_add_folga = new javax.swing.JMenuItem();
         btn_add_coord = new javax.swing.JMenuItem();
-        botao_Adm = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        btn_Adm = new javax.swing.JMenuItem();
+        btn_calend = new javax.swing.JMenuItem();
+        btn_senha = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        btn_uni = new javax.swing.JMenuItem();
+        btn_facul = new javax.swing.JMenuItem();
+        btn_escola = new javax.swing.JMenuItem();
+        btn_proj = new javax.swing.JMenuItem();
+        btn_fol = new javax.swing.JMenuItem();
+        btn_coord = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        botao_Sobre = new javax.swing.JMenuItem();
+        btn_sobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Escola da Família");
@@ -507,22 +507,22 @@ public class Inicio extends JFrame {
 
     jMenu1.add(jMenu5);
 
-    botao_Adm.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
-    botao_Adm.setText("Administrador");
-    botao_Adm.addActionListener(new java.awt.event.ActionListener() {
+    btn_Adm.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+    btn_Adm.setText("Administrador");
+    btn_Adm.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            botao_AdmActionPerformed(evt);
+            btn_AdmActionPerformed(evt);
         }
     });
-    jMenu1.add(botao_Adm);
+    jMenu1.add(btn_Adm);
 
-    jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-    jMenuItem9.setText("Calendário");
-    jMenu1.add(jMenuItem9);
+    btn_calend.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+    btn_calend.setText("Calendário");
+    jMenu1.add(btn_calend);
 
-    jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-    jMenuItem7.setText("Alterar Senha");
-    jMenu1.add(jMenuItem7);
+    btn_senha.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+    btn_senha.setText("Alterar Senha");
+    jMenu1.add(btn_senha);
     jMenu1.add(jSeparator1);
 
     jMenuItem8.setText("Sair");
@@ -532,49 +532,49 @@ public class Inicio extends JFrame {
 
     jMenu6.setText("Visualizar");
 
-    jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-    jMenuItem1.setText("Universitário");
-    jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+    btn_uni.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+    btn_uni.setText("Universitário");
+    btn_uni.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jMenuItem1ActionPerformed(evt);
+            btn_uniActionPerformed(evt);
         }
     });
-    jMenu6.add(jMenuItem1);
+    jMenu6.add(btn_uni);
 
-    jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-    jMenuItem2.setText("Faculdade");
-    jMenu6.add(jMenuItem2);
+    btn_facul.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+    btn_facul.setText("Faculdade");
+    jMenu6.add(btn_facul);
 
-    jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-    jMenuItem3.setText("Escola");
-    jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+    btn_escola.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+    btn_escola.setText("Escola");
+    btn_escola.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jMenuItem3ActionPerformed(evt);
+            btn_escolaActionPerformed(evt);
         }
     });
-    jMenu6.add(jMenuItem3);
+    jMenu6.add(btn_escola);
 
-    jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-    jMenuItem4.setText("Projeto");
-    jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+    btn_proj.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+    btn_proj.setText("Projeto");
+    btn_proj.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jMenuItem4ActionPerformed(evt);
+            btn_projActionPerformed(evt);
         }
     });
-    jMenu6.add(jMenuItem4);
+    jMenu6.add(btn_proj);
 
-    jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
-    jMenuItem5.setText("Folga");
-    jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+    btn_fol.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+    btn_fol.setText("Folga");
+    btn_fol.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jMenuItem5ActionPerformed(evt);
+            btn_folActionPerformed(evt);
         }
     });
-    jMenu6.add(jMenuItem5);
+    jMenu6.add(btn_fol);
 
-    jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-    jMenuItem6.setText("Coordenador");
-    jMenu6.add(jMenuItem6);
+    btn_coord.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+    btn_coord.setText("Coordenador");
+    jMenu6.add(btn_coord);
 
     jMenuBar1.add(jMenu6);
 
@@ -583,14 +583,14 @@ public class Inicio extends JFrame {
 
     jMenu3.setText("Ajuda");
 
-    botao_Sobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
-    botao_Sobre.setText("Sobre");
-    botao_Sobre.addActionListener(new java.awt.event.ActionListener() {
+    btn_sobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+    btn_sobre.setText("Sobre");
+    btn_sobre.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            botao_SobreActionPerformed(evt);
+            btn_sobreActionPerformed(evt);
         }
     });
-    jMenu3.add(botao_Sobre);
+    jMenu3.add(btn_sobre);
 
     jMenuBar1.add(jMenu3);
 
@@ -655,7 +655,7 @@ public class Inicio extends JFrame {
 
     }//GEN-LAST:event_botao_SalvarActionPerformed
 
-    private void botao_SobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_SobreActionPerformed
+    private void btn_sobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sobreActionPerformed
         ComandosSQL b = new ComandosSQL();
         try {
             b.getMaxUniversitario();
@@ -665,12 +665,12 @@ public class Inicio extends JFrame {
         } catch (ClassNotFoundException e) {
             System.out.println("oi2");
         }
-    }//GEN-LAST:event_botao_SobreActionPerformed
+    }//GEN-LAST:event_btn_sobreActionPerformed
 
-    private void botao_AdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_AdmActionPerformed
+    private void btn_AdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdmActionPerformed
         Item_Administrador vis = new Item_Administrador();
         vis.setVisible(true);
-    }//GEN-LAST:event_botao_AdmActionPerformed
+    }//GEN-LAST:event_btn_AdmActionPerformed
 
     private void botao_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_ExcluirActionPerformed
         ComandosSQL sql = new ComandosSQL();
@@ -906,7 +906,7 @@ public class Inicio extends JFrame {
         }
     }//GEN-LAST:event_table_FolgasMouseClicked
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void btn_uniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uniActionPerformed
         indiceDeTabela = 0;
 
         Tabela.setSelectedIndex(0);           //Foca na aba 0
@@ -956,9 +956,9 @@ public class Inicio extends JFrame {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_btn_uniActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void btn_projActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_projActionPerformed
         indiceDeTabela = 1;
 
         Tabela.setSelectedIndex(1);           //Foca na aba 0
@@ -990,9 +990,9 @@ public class Inicio extends JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_btn_projActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void btn_escolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_escolaActionPerformed
         indiceDeTabela = 2;
 
         Tabela.setSelectedIndex(2);           //Foca na aba 0
@@ -1021,9 +1021,9 @@ public class Inicio extends JFrame {
             JOptionPane.showMessageDialog(null, "Erro de SQL: " + e);
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_btn_escolaActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void btn_folActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_folActionPerformed
         indiceDeTabela = 3;
 
         Tabela.setSelectedIndex(3);           //Foca na aba 0
@@ -1053,7 +1053,7 @@ public class Inicio extends JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_btn_folActionPerformed
 
     public void limpar_tabela() {
         for (int linha = 0; linha < 30; linha++) {
@@ -1117,18 +1117,26 @@ public class Inicio extends JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Tabela;
     private javax.swing.JButton botao_Adicionar;
-    private javax.swing.JMenuItem botao_Adm;
     private javax.swing.JButton botao_Editar;
     private javax.swing.JButton botao_Excluir;
     private javax.swing.JButton botao_Pesquisar;
     private javax.swing.JButton botao_Salvar;
-    private javax.swing.JMenuItem botao_Sobre;
+    private javax.swing.JMenuItem btn_Adm;
     private javax.swing.JMenuItem btn_add_coord;
     private javax.swing.JMenuItem btn_add_escola;
     private javax.swing.JMenuItem btn_add_facul;
     private javax.swing.JMenuItem btn_add_folga;
     private javax.swing.JMenuItem btn_add_proj;
     private javax.swing.JMenuItem btn_add_uni;
+    private javax.swing.JMenuItem btn_calend;
+    private javax.swing.JMenuItem btn_coord;
+    private javax.swing.JMenuItem btn_escola;
+    private javax.swing.JMenuItem btn_facul;
+    private javax.swing.JMenuItem btn_fol;
+    private javax.swing.JMenuItem btn_proj;
+    private javax.swing.JMenuItem btn_senha;
+    private javax.swing.JMenuItem btn_sobre;
+    private javax.swing.JMenuItem btn_uni;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -1136,15 +1144,7 @@ public class Inicio extends JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
