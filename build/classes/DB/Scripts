@@ -1,0 +1,40 @@
+if (db.connect()) {
+            System.out.println("Conectado!");
+            System.out.println("Rodando uma query contra o banco");
+
+            query = "select * from usuarios";
+            ResultSet rs = db.executar(query);
+            try {
+                if (rs != null) { // Verifica se a query retornou algo
+                    while (rs.next()) {
+                        // Podemos referenciar a coluna pelo índice
+                        System.out.println("ID: " + rs.getInt(1));
+                        System.out.println("User: " + rs.getString(2));
+
+                        // Ou pelo seu nome
+                        System.out.println("Pass: " + rs.getString("pass"));
+                        System.out.println("—————————-");
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("Inserindo dados na tabela");
+            query = "insert into usuarios (user, pass) values ('Maria','23')";
+            result = db.inserir(query);
+            if (result > -1) {
+                System.out.println("Dado inserido com sucesso! Resutlt = " + result);
+            } else {
+                System.out.println("Erro inserindo dado.");
+            }
+
+            /*query = "update usuario set idade = 99";
+            result = db.inserir(query);
+            if (result > -1) {
+                System.out.println("Dado inserido com sucesso! Resutlt = " + result);
+            } else {
+                System.out.println("Erro inserindo dado.");
+            }*/
+
+        };

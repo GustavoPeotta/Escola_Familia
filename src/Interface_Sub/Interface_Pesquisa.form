@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="text_pesquisa" pref="277" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="botao_pesquisar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="botao_fechar" min="-2" pref="80" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="radio_uni" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="radio_proj" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="radio_inv" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="radio_fol" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Component id="tabela_pesquisa" alignment="1" pref="472" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="text_pesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botao_pesquisar" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="botao_fechar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="radio_uni" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="radio_proj" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="radio_inv" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="radio_fol" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="239" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="63" max="32767" attributes="0"/>
+                  <Component id="tabela_pesquisa" min="-2" pref="237" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JTextField" name="text_pesquisa">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="text_pesquisaMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botao_pesquisar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pesquisar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_pesquisarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botao_fechar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fechar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_fecharActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JTabbedPane" name="tabela_pesquisa">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Universit&#xe1;rios">
+                <Property name="tabTitle" type="java.lang.String" value="Universit&#xe1;rios"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="table_pesquisa_uni">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;C&#xf3;digo&quot;, &quot;Nome&quot;, &quot;Login&quot;, &quot;Nascimento&quot;, &quot;Dia&quot;&#xa;    }&#xa;){&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int lin, int col) {&#xa;        return false;&#xa;    }&#xa;&#xa;}&#xa;" type="code"/>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="3"/>
+                </Property>
+                <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Projetos">
+                <Property name="tabTitle" type="java.lang.String" value="Projetos"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="table_pesquisa_proj">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null}&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;C&#xf3;digo&quot;, &quot;Nome&quot;, &quot;Organizador&quot;, &quot;Inicio&quot;, &quot;Fim&quot;&#xd;&#xa;    }&#xd;&#xa;){&#xd;&#xa;    Class[] types = new Class [] {&#xd;&#xa;        java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public Class getColumnClass(int columnIndex) {&#xd;&#xa;        return types [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int lin, int col) {&#xd;&#xa;        return false;&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;}" type="code"/>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0"/>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Invent&#xe1;rio">
+                <Property name="tabTitle" type="java.lang.String" value="Invent&#xe1;rio"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="table_pesquisa_inv">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null}&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;C&#xf3;digo Material&quot;, &quot;Descri&#xe7;&#xe3;o&quot;, &quot;Quantidade&quot;, &quot;Medida&quot;, &quot;&#xda;ltima Modifica&#xe7;&#xe3;o&quot;&#xd;&#xa;    }&#xd;&#xa;){&#xd;&#xa;    Class[] types = new Class [] {&#xd;&#xa;        java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public Class getColumnClass(int columnIndex) {&#xd;&#xa;        return types [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int lin, int col) {&#xd;&#xa;        return false;&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;}" type="code"/>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0"/>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Folgas">
+                <Property name="tabTitle" type="java.lang.String" value="Folgas"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="table_pesquisa_fol">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        &#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null},&#xd;&#xa;        {null, null, null, null, null}&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;N&#xba; Sequ&#xea;ncia&quot;, &quot;Nome&quot;, &quot;Data da Folga&quot;, &quot;Data da Inclus&#xe3;o&quot;&#xd;&#xa;    }&#xd;&#xa;){&#xd;&#xa;    Class[] types = new Class [] {&#xd;&#xa;        java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public Class getColumnClass(int columnIndex) {&#xd;&#xa;        return types [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int lin, int col) {&#xd;&#xa;        return false;&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;}" type="code"/>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0"/>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JRadioButton" name="radio_uni">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Universit&#xe1;rio"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="radio_proj">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Projeto"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="radio_inv">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Invent&#xe1;rio"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="radio_fol">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Folga"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
