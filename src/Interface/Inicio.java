@@ -2,6 +2,9 @@ package Interface;
 
 import DB.ComandosSQL;
 import DB.MySQL;
+import Interface_Sub.Add_Folgas;
+import Interface_Sub.Add_Projeto;
+import Interface_Sub.Add_Universitario;
 import Interface_Sub.Edit_Folga;
 import Interface_Sub.Edit_Inventario;
 import Interface_Sub.Edit_Projeto;
@@ -12,6 +15,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -88,10 +92,10 @@ public class Inicio extends JFrame {
         table_Projetos = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         table_inventario = new javax.swing.JTable();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        table_Folgas = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        table_Folgas = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -369,6 +373,79 @@ public class Inicio extends JFrame {
 
     Tabela.addTab("Escolas", jScrollPane4);
 
+    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null}
+        },
+        new String [] {
+            "Nº Sequência", "Nome", "Escola", "Data da Folga", "Data da Inclusão"
+        }
+    ){
+        Class[] types = new Class [] {
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types [columnIndex];
+        }
+
+        public boolean isCellEditable(int lin, int col) {
+            return false;
+        }
+
+    });
+    jScrollPane1.setViewportView(jTable1);
+
+    Tabela.addTab("Faculdade", jScrollPane1);
+
     table_Folgas.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
             {null, null, null, null, null},
@@ -447,35 +524,78 @@ public class Inicio extends JFrame {
 
     Tabela.addTab("Folgas", jScrollPane5);
 
-    jTable1.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null}
-        },
-        new String [] {
-            "Title 1", "Title 2", "Title 3", "Title 4"
-        }
-    ));
-    jScrollPane1.setViewportView(jTable1);
-
-    Tabela.addTab("tab5", jScrollPane1);
-
     jTable2.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null}
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null}
         },
         new String [] {
-            "Title 1", "Title 2", "Title 3", "Title 4"
+            "Nº Sequência", "Nome", "Escola", "Data da Folga", "Data da Inclusão"
         }
-    ));
+    ){
+        Class[] types = new Class [] {
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types [columnIndex];
+        }
+
+        public boolean isCellEditable(int lin, int col) {
+            return false;
+        }
+
+    });
     jScrollPane6.setViewportView(jTable2);
 
-    Tabela.addTab("tab6", jScrollPane6);
+    Tabela.addTab("Coordenador", jScrollPane6);
 
     jMenu1.setText("Arquivo");
 
@@ -483,10 +603,20 @@ public class Inicio extends JFrame {
 
     btn_add_uni.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK));
     btn_add_uni.setText("Universitário");
+    btn_add_uni.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_add_uniActionPerformed(evt);
+        }
+    });
     jMenu5.add(btn_add_uni);
 
     btn_add_facul.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.SHIFT_MASK));
     btn_add_facul.setText("Faculdade");
+    btn_add_facul.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_add_faculActionPerformed(evt);
+        }
+    });
     jMenu5.add(btn_add_facul);
 
     btn_add_escola.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK));
@@ -495,10 +625,20 @@ public class Inicio extends JFrame {
 
     btn_add_proj.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK));
     btn_add_proj.setText("Projeto");
+    btn_add_proj.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_add_projActionPerformed(evt);
+        }
+    });
     jMenu5.add(btn_add_proj);
 
     btn_add_folga.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.SHIFT_MASK));
     btn_add_folga.setText("Folga");
+    btn_add_folga.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_add_folgaActionPerformed(evt);
+        }
+    });
     jMenu5.add(btn_add_folga);
 
     btn_add_coord.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK));
@@ -614,8 +754,8 @@ public class Inicio extends JFrame {
                     .addComponent(botao_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(botao_Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE))
-                .addComponent(Tabela, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
+                    .addGap(0, 293, Short.MAX_VALUE))
+                .addComponent(Tabela))
             .addContainerGap())
     );
     layout.setVerticalGroup(
@@ -741,7 +881,7 @@ public class Inicio extends JFrame {
                     int cod = Integer.parseInt(String.valueOf(table_Folgas.getValueAt(linha, 0)));
                     sql.delete_line_folga(cod);
                     System.out.println("Linha folga excluida");
-                    in.botao_UniversitarioActionPerformed(evt);
+                    in.btn_uniActionPerformed(evt);
                 } else {
                     dispose();
                 }
@@ -751,7 +891,7 @@ public class Inicio extends JFrame {
                 break;
         }
         limpar_tabela();
-        botao_UniversitarioActionPerformed(evt);
+        in.btn_uniActionPerformed(evt);
 
     }//GEN-LAST:event_botao_ExcluirActionPerformed
 
@@ -1054,6 +1194,40 @@ public class Inicio extends JFrame {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_folActionPerformed
+
+    private void btn_add_uniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_uniActionPerformed
+        Add_Universitario add_uni = null;
+        try {
+            add_uni = new Add_Universitario();
+        } catch (ParseException | ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        add_uni.setVisible(true);
+    }//GEN-LAST:event_btn_add_uniActionPerformed
+
+    private void btn_add_faculActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_faculActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_add_faculActionPerformed
+
+    private void btn_add_projActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_projActionPerformed
+        Add_Projeto add_proj = null;
+        try {
+            add_proj = new Add_Projeto();
+        } catch (ParseException | ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        add_proj.setVisible(true);
+    }//GEN-LAST:event_btn_add_projActionPerformed
+
+    private void btn_add_folgaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_folgaActionPerformed
+        Add_Folgas add_folga = null;
+        try {
+            add_folga = new Add_Folgas();
+        } catch (ParseException | ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        add_folga.setVisible(true);
+    }//GEN-LAST:event_btn_add_folgaActionPerformed
 
     public void limpar_tabela() {
         for (int linha = 0; linha < 30; linha++) {

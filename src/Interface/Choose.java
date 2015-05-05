@@ -11,8 +11,6 @@ import Interface_Sub.Add_Folgas;
 import Interface_Sub.Add_Inventario;
 import Interface_Sub.Add_Projeto;
 import Interface_Sub.Add_Universitario;
-import Interface_Sub.Interface_Pesquisa;
-import java.awt.Color;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -117,7 +115,7 @@ public class Choose extends JFrame{
                         .addComponent(botao_Confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botao_Volta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,11 +147,7 @@ public class Choose extends JFrame{
             Add_Universitario universitario = null;
             try {
                 universitario = new Add_Universitario();
-            } catch (ParseException ex) {
-                Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+            } catch (ParseException | ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
             }
             universitario.setVisible(true);
@@ -161,11 +155,7 @@ public class Choose extends JFrame{
             Add_Projeto projeto = null;
             try {
                 projeto = new Add_Projeto();
-            } catch (ParseException ex) {
-                Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+            } catch (ParseException | ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
             }
             projeto.setVisible(true);
@@ -173,9 +163,7 @@ public class Choose extends JFrame{
              Add_Inventario inventario = null;
             try {
                 inventario = new Add_Inventario();
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+            } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
             }
             inventario.setVisible(true);
@@ -183,11 +171,7 @@ public class Choose extends JFrame{
             Add_Folgas folgas = null;
             try {
                 folgas = new Add_Folgas();
-            } catch (ParseException ex) {
-                Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+            } catch (ParseException | ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(Choose.class.getName()).log(Level.SEVERE, null, ex);
             }
             folgas.setVisible(true);

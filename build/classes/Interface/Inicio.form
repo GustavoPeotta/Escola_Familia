@@ -23,6 +23,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Universit&#xe1;rio"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_add_uniActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="btn_add_facul">
                   <Properties>
@@ -31,6 +34,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Faculdade"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_add_faculActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="btn_add_escola">
                   <Properties>
@@ -47,6 +53,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Projeto"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_add_projActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="btn_add_folga">
                   <Properties>
@@ -55,6 +64,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Folga"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_add_folgaActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="btn_add_coord">
                   <Properties>
@@ -240,9 +252,9 @@
                       <Component id="botao_Excluir" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="botao_Pesquisar" min="-2" pref="43" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="Tabela" alignment="0" pref="532" max="32767" attributes="0"/>
+                  <Component id="Tabela" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -427,6 +439,35 @@
             </Component>
           </SubComponents>
         </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Faculdade">
+                <Property name="tabTitle" type="java.lang.String" value="Faculdade"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable1">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        &#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;N&#xba; Sequ&#xea;ncia&quot;, &quot;Nome&quot;, &quot;Escola&quot;, &quot;Data da Folga&quot;, &quot;Data da Inclus&#xe3;o&quot;&#xa;    }&#xa;){&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int lin, int col) {&#xa;        return false;&#xa;    }&#xa;&#xa;}" type="code"/>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0"/>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPane5">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -459,42 +500,14 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab5">
-                <Property name="tabTitle" type="java.lang.String" value="tab5"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
-              <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                  </Table>
-                </Property>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPane6">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab6">
-                <Property name="tabTitle" type="java.lang.String" value="tab6"/>
+              <JTabbedPaneConstraints tabName="Coordenador">
+                <Property name="tabTitle" type="java.lang.String" value="Coordenador"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -503,13 +516,14 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="jTable2">
               <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                  </Table>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        &#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null},&#xa;        {null, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;N&#xba; Sequ&#xea;ncia&quot;, &quot;Nome&quot;, &quot;Escola&quot;, &quot;Data da Folga&quot;, &quot;Data da Inclus&#xe3;o&quot;&#xa;    }&#xa;){&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int lin, int col) {&#xa;        return false;&#xa;    }&#xa;&#xa;}" type="code"/>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0"/>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
             </Component>
