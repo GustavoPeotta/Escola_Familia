@@ -19,10 +19,10 @@ public class ComandosSQL {
     /**
      * *****************************************************************************************
      */
-    public void add_universitario(String nome, String nasc, String fone, String dia, String rua, int numero, String complemento, String bairro, int cidade, int faculdade) {
+    public void add_universitario(String nome, String nasc, String fone, String dia, String rua, int numero, String complemento, String bairro, int cidade, int faculdade, int escola) {
         if (db.connect()) {
-            query = "INSERT INTO UNIVERSITARIOS(nome, nasc, telefone, dia, rua, numero, complemento, bairro, idcidade, idfaculdade) VALUES"
-                    + "('" + nome + "','" + nasc + "','" + fone + "','" + dia + "','" + rua + "'," + numero + ",'" + complemento + "','" + bairro + "'," + cidade + ", "+ faculdade +");";
+            query = "INSERT INTO UNIVERSITARIOS(nome, nasc, telefone, dia, rua, numero, complemento, bairro, idcidade, idfaculdade, idescola) VALUES"
+                    + "('" + nome + "','" + nasc + "','" + fone + "','" + dia + "','" + rua + "'," + numero + ",'" + complemento + "','" + bairro + "'," + cidade + ", "+ faculdade +", "+ escola +");";
             System.out.println(query);
             db.inserir(query);
         }
@@ -212,6 +212,15 @@ public class ComandosSQL {
             }
         }
         return tabela;
+    }
+    
+    public ResultSet search_id_uni(String id) throws ClassNotFoundException, SQLException {
+        if (db.connect()) {
+            query = "SELECT * FROM UNIVERSITARIOS WHERE ID = " + id + "";
+            System.out.println(query);
+            rs = db.executar(query);
+        }
+        return rs;
     }
 
     public JTable search_proj(String texto, JTable tabela) throws ClassNotFoundException, SQLException {
@@ -421,6 +430,22 @@ public class ComandosSQL {
         }
         return rs;
     }
+    
+    public ResultSet listar_escolas() {
+        if (db.connect()) {
+            query = "SELECT NOME FROM ESCOLAS ORDER BY NOME ASC";
+            rs = db.executar(query);
+        }
+        return rs;
+    }
+    
+    public ResultSet listar_cursos() {
+        if (db.connect()) {
+            query = "SELECT NOME FROM CURSOS ORDER BY NOME ASC";
+            rs = db.executar(query);
+        }
+        return rs;
+    }
 
     public void insert_foto() {
         if (db.connect()) {
@@ -443,6 +468,19 @@ public class ComandosSQL {
         return id;
     }
     
+    public String busca_nomecidade(int id) throws SQLException {
+        String nome = null;
+        if (db.connect()) {
+            query = "SELECT NOME FROM `cidades` WHERE ID = " + id + "";
+            rs = db.executar(query);
+
+            while (rs.next()) {
+                nome = rs.getString("NOME");
+            }
+        }
+        return nome;
+    }
+    
     public int busca_idfaculdade(String faculdade) throws SQLException {
         int id = 0;
         if (db.connect()) {
@@ -455,7 +493,72 @@ public class ComandosSQL {
         }
         return id;
     }
+    
+    public String busca_nomefaculdade(int id) throws SQLException {
+        String nome = null;
+        if (db.connect()) {
+            query = "SELECT NOME FROM FACULDADES WHERE ID = " + id + "";
+            rs = db.executar(query);
 
+            while (rs.next()) {
+                nome = rs.getString("NOME");
+            }
+        }
+        return nome;
+    }
+    
+    public int busca_idescola(String escola) throws SQLException {
+        int id = 0;
+        if (db.connect()) {
+            query = "SELECT ID FROM `escolas` WHERE NOME = '" + escola + "'";
+            rs = db.executar(query);
+
+            while (rs.next()) {
+                id = rs.getInt("ID");
+            }
+        }
+        return id;
+    }
+    
+    public String busca_nomecurso(int id) throws SQLException {
+        String nome = null;
+        if (db.connect()) {
+            query = "SELECT NOME FROM `cursos` WHERE ID = " + id + "";
+            rs = db.executar(query);
+
+            while (rs.next()) {
+                nome = rs.getString("NOME");
+            }
+        }
+        return nome;
+    }
+    
+    public int busca_idcurso(String escola) throws SQLException {
+        int id = 0;
+        if (db.connect()) {
+            query = "SELECT ID FROM `cursos` WHERE NOME = '" + escola + "'";
+            rs = db.executar(query);
+
+            while (rs.next()) {
+                id = rs.getInt("ID");
+            }
+        }
+        return id;
+    }
+    
+    public String busca_nomeescola(int id) throws SQLException {
+        String nome = null;
+        if (db.connect()) {
+            query = "SELECT NOME FROM `escolas` WHERE ID = " + id + "";
+            rs = db.executar(query);
+
+            while (rs.next()) {
+                nome = rs.getString("NOME");
+            }
+        }
+        return nome;
+    }
+    
     public void imagem(String dir) throws FileNotFoundException {
         if (db.connect()) {
             //query = "SELECT ID FROM `cidades` WHERE NOME = '" + cidade + "'";

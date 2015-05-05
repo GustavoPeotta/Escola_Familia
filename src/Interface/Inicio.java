@@ -10,9 +10,7 @@ import Interface_Sub.Edit_Inventario;
 import Interface_Sub.Edit_Projeto;
 import Interface_Sub.Edit_Universitario;
 import Interface_Sub.Interface_Pesquisa;
-import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -91,7 +89,7 @@ public class Inicio extends JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         table_Projetos = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        table_inventario = new javax.swing.JTable();
+        table_escola = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -304,7 +302,7 @@ public class Inicio extends JFrame {
 
     Tabela.addTab("Projetos", jScrollPane3);
 
-    table_inventario.setModel(new javax.swing.table.DefaultTableModel(
+    table_escola.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
             {null, null, null},
             {null, null, null},
@@ -364,12 +362,12 @@ public class Inicio extends JFrame {
         }
 
     });
-    table_inventario.addMouseListener(new java.awt.event.MouseAdapter() {
+    table_escola.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            table_inventarioMouseClicked(evt);
+            table_escolaMouseClicked(evt);
         }
     });
-    jScrollPane4.setViewportView(table_inventario);
+    jScrollPane4.setViewportView(table_escola);
 
     Tabela.addTab("Escolas", jScrollPane4);
 
@@ -854,14 +852,14 @@ public class Inicio extends JFrame {
 
                 break;
             case 2:
-                linha = table_inventario.getSelectedRow();
+                linha = table_escola.getSelectedRow();
                 tabela = 2;
                 System.out.println("\nCódigo selecionado: " + linha + "\nTabela Inv");
 
                 opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir este registro", "Atenção", 1);
 
                 if (opcao == 0) {
-                    int cod = Integer.parseInt(String.valueOf(table_inventario.getValueAt(linha, 0)));
+                    int cod = Integer.parseInt(String.valueOf(table_escola.getValueAt(linha, 0)));
                     sql.delete_line_inv(cod);
                     System.out.println("Linha inventario excluida");
                     Tabela.setSelectedIndex(2);
@@ -910,7 +908,7 @@ public class Inicio extends JFrame {
                 System.out.println("\nCódigo selecionado: " + linha + "\nTabela Pro");
                 break;
             case 2:
-                linha = table_inventario.getSelectedRow();
+                linha = table_escola.getSelectedRow();
                 tabela = 2;
                 System.out.println("\nCódigo selecionado: " + linha + "\nTabela Inv");
                 break;
@@ -942,11 +940,11 @@ public class Inicio extends JFrame {
             Edit_Projeto proj = new Edit_Projeto(cod, nome, organizador, inicio, fim);
             proj.setVisible(true);
         } else if (tabela == 2) {
-            int cod = Integer.parseInt(String.valueOf(table_inventario.getValueAt(linha, 0)));
-            String descricao = String.valueOf(table_inventario.getValueAt(linha, 1));
-            String quantidade = String.valueOf(table_inventario.getValueAt(linha, 2));
-            String medida = String.valueOf(table_inventario.getValueAt(linha, 3));
-            String modificacao = String.valueOf(table_inventario.getValueAt(linha, 4));
+            int cod = Integer.parseInt(String.valueOf(table_escola.getValueAt(linha, 0)));
+            String descricao = String.valueOf(table_escola.getValueAt(linha, 1));
+            String quantidade = String.valueOf(table_escola.getValueAt(linha, 2));
+            String medida = String.valueOf(table_escola.getValueAt(linha, 3));
+            String modificacao = String.valueOf(table_escola.getValueAt(linha, 4));
 
             Edit_Inventario inv = new Edit_Inventario(cod, descricao, quantidade, medida, modificacao);
             inv.setVisible(true);
@@ -978,14 +976,14 @@ public class Inicio extends JFrame {
             int codigo = table_universitario.getSelectedRow();
             System.out.println("\nCódigo selecionado: " + codigo);
 
-            String cod = String.valueOf(table_universitario.getValueAt(codigo, 0));
-            String nome = String.valueOf(table_universitario.getValueAt(codigo, 1));
-            String login = String.valueOf(table_universitario.getValueAt(codigo, 2));
-            String nasc = String.valueOf(table_universitario.getValueAt(codigo, 3));
-            String dia = String.valueOf(table_universitario.getValueAt(codigo, 4));
+            String id = String.valueOf(table_universitario.getValueAt(codigo, 0));
 
-            Edit_Universitario editar = new Edit_Universitario(cod, nome, login, nasc, dia);
-            editar.setVisible(true);
+            try {
+                Add_Universitario uni = new Add_Universitario(id);
+                uni.setVisible(true);
+            } catch (SQLException | ClassNotFoundException | ParseException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
     }//GEN-LAST:event_table_universitarioMouseClicked
@@ -1007,22 +1005,22 @@ public class Inicio extends JFrame {
         }
     }//GEN-LAST:event_table_ProjetosMouseClicked
 
-    private void table_inventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_inventarioMouseClicked
+    private void table_escolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_escolaMouseClicked
         //Se clicar duas vezes, habilita a classe Edit_row para editar o registro
         if (evt.getClickCount() == 2 && Double_Clik == false) {
-            int codigo = table_inventario.getSelectedRow();
+            int codigo = table_escola.getSelectedRow();
             System.out.println("\nCódigo selecionado: " + codigo);
 
-            int cod = Integer.parseInt(String.valueOf(table_inventario.getValueAt(codigo, 0)));
-            String descricao = String.valueOf(table_inventario.getValueAt(codigo, 1));
-            String qntd = String.valueOf(table_inventario.getValueAt(codigo, 2));
-            String medida = String.valueOf(table_inventario.getValueAt(codigo, 3));
-            String data = String.valueOf(table_inventario.getValueAt(codigo, 4));
+            int cod = Integer.parseInt(String.valueOf(table_escola.getValueAt(codigo, 0)));
+            String descricao = String.valueOf(table_escola.getValueAt(codigo, 1));
+            String qntd = String.valueOf(table_escola.getValueAt(codigo, 2));
+            String medida = String.valueOf(table_escola.getValueAt(codigo, 3));
+            String data = String.valueOf(table_escola.getValueAt(codigo, 4));
 
             Edit_Inventario editar = new Edit_Inventario(cod, descricao, qntd, medida, data);
             editar.setVisible(true);
         }
-    }//GEN-LAST:event_table_inventarioMouseClicked
+    }//GEN-LAST:event_table_escolaMouseClicked
 
     private void table_FolgasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_FolgasMouseClicked
         //Se clicar duas vezes, habilita a classe Edit_row para editar o registro
@@ -1048,12 +1046,8 @@ public class Inicio extends JFrame {
 
     private void btn_uniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uniActionPerformed
         indiceDeTabela = 0;
-
-        Tabela.setSelectedIndex(0);           //Foca na aba 0
-        Tabela.setEnabledAt(0, true);         //Habilita a aba 0
-        Tabela.setEnabledAt(1, false);        //Desabilita a aba 1
-        Tabela.setEnabledAt(2, false);        //Desabilita a aba 2
-        Tabela.setEnabledAt(3, false);        //Desabilita a aba 3
+        
+        Habilitar_Tabelas(0);
         table_universitario.setVisible(true);
 
         if (pesquisa == true) {
@@ -1100,14 +1094,10 @@ public class Inicio extends JFrame {
 
     private void btn_projActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_projActionPerformed
         indiceDeTabela = 1;
-
-        Tabela.setSelectedIndex(1);           //Foca na aba 0
-        Tabela.setEnabledAt(0, false);        //Desabilita a aba 0
-        Tabela.setEnabledAt(1, true);         //Habilita a aba 1
-        Tabela.setEnabledAt(2, false);        //Desabilita a aba 2
-        Tabela.setEnabledAt(3, false);        //Desabilita a aba 3
-        table_Projetos.setVisible(true);      //Tabela visivel
-
+        
+        Habilitar_Tabelas(1);
+        table_Projetos.setVisible(true);
+        
         ResultSet rs = comandos.getProj();
 
         int i = 0;
@@ -1134,14 +1124,10 @@ public class Inicio extends JFrame {
 
     private void btn_escolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_escolaActionPerformed
         indiceDeTabela = 2;
-
-        Tabela.setSelectedIndex(2);           //Foca na aba 0
-        Tabela.setEnabledAt(0, false);        //Desabilita a aba 0
-        Tabela.setEnabledAt(1, false);         //Habilita a aba 1
-        Tabela.setEnabledAt(2, true);        //Desabilita a aba 2
-        Tabela.setEnabledAt(3, false);        //Desabilita a aba 3
-        table_inventario.setVisible(true);              //Tabela visivel
-
+        
+        Habilitar_Tabelas(2);
+        table_escola.setVisible(true);
+        
         ResultSet rs = comandos.getEscola();
         int i = 0;
 
@@ -1151,9 +1137,9 @@ public class Inicio extends JFrame {
                 nome = rs.getString("NOME");
                 coordenador = rs.getString("COORDENADOR");
                 //valor, linha, coluna
-                table_inventario.setValueAt(codigo, i, 0);
-                table_inventario.setValueAt(nome, i, 1);
-                table_inventario.setValueAt(coordenador, i, 2);
+                table_escola.setValueAt(codigo, i, 0);
+                table_escola.setValueAt(nome, i, 1);
+                table_escola.setValueAt(coordenador, i, 2);
                 i++;
 
             }
@@ -1165,14 +1151,10 @@ public class Inicio extends JFrame {
 
     private void btn_folActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_folActionPerformed
         indiceDeTabela = 3;
-
-        Tabela.setSelectedIndex(3);           //Foca na aba 0
-        Tabela.setEnabledAt(0, false);        //Desabilita a aba 0
-        Tabela.setEnabledAt(1, false);         //Desabilita a aba 1
-        Tabela.setEnabledAt(2, false);        //Desabilita a aba 2
-        Tabela.setEnabledAt(3, true);        //Habilita a aba 3
-        table_Folgas.setVisible(true);              //Tabela visivel
-
+        
+        Habilitar_Tabelas(3);
+        table_Folgas.setVisible(true);
+        
         rs = comandos.getFol();
         i = 0;
         try {
@@ -1242,7 +1224,7 @@ public class Inicio extends JFrame {
         }
         for (int linha = 0; linha < 30; linha++) {
             for (int coluna = 0; coluna < 5; coluna++) {
-                table_inventario.setValueAt(null, linha, coluna);
+                table_escola.setValueAt(null, linha, coluna);
             }
         }
         for (int linha = 0; linha < 30; linha++) {
@@ -1286,6 +1268,19 @@ public class Inicio extends JFrame {
             }
         });
 
+    }
+    
+    public void Habilitar_Tabelas(int i){
+        
+        Tabela.setEnabledAt(0, false);         //Habilita a aba 0
+        Tabela.setEnabledAt(1, false);        //Desabilita a aba 1
+        Tabela.setEnabledAt(2, false);        //Desabilita a aba 2
+        Tabela.setEnabledAt(3, false);        //Desabilita a aba 3
+        Tabela.setEnabledAt(4, false);        //Desabilita a aba 4
+        Tabela.setEnabledAt(5, false);        //Desabilita a aba 5
+        
+        Tabela.setSelectedIndex(i);           //Foca na aba 0
+        Tabela.setEnabledAt(i, true);         //Habilita a aba 0
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1331,7 +1326,7 @@ public class Inicio extends JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable table_Folgas;
     private javax.swing.JTable table_Projetos;
-    private javax.swing.JTable table_inventario;
+    private javax.swing.JTable table_escola;
     private javax.swing.JTable table_universitario;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,12 +10,11 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
@@ -34,9 +33,6 @@ public class Add_Universitario extends javax.swing.JFrame {
 
     ComandosSQL sql = new ComandosSQL();
 
-    MaskFormatter maskData = new MaskFormatter("##/##/####");
-    MaskFormatter maskFone = new MaskFormatter("(##)####-####");
-
     ResultSet rs;
     String foto = null;
     private int id;
@@ -49,20 +45,44 @@ public class Add_Universitario extends javax.swing.JFrame {
     private String bairro;
     private int idcidade;
     private int idfaculdade;
+    private int idescola;
     private String estado;
     private String pais;
     private String fone;
-    
+
     private String formatData(String data) throws SQLException {
         //18/19/2000
-        System.out.println("O dia é: "+data);
+        System.out.println("O dia é: " + data);
         String dia = data.substring(0, 2);
         String mes = data.substring(3, 5);
         String ano = data.substring(6, 10);
-        String dt = ano+"-"+mes+"-"+dia;
-        System.out.println("Dia:"+dia+"/Mes:"+mes+"/ano:"+ano);
+        String dt = ano + "-" + mes + "-" + dia;
+        System.out.println("Dia:" + dia + "/Mes:" + mes + "/ano:" + ano);
         System.out.println(dt);
         return dt;
+    }
+
+    public void listar() throws SQLException {
+        rs = sql.listar_estados();
+        while (rs.next()) {
+            combo_estado.addItem(rs.getString("NOME"));
+        }
+
+        rs = sql.listar_cidades();
+        while (rs.next()) {
+            combo_cidades.addItem(rs.getString("NOME"));
+        }
+
+        rs = sql.listar_faculdades();
+        while (rs.next()) {
+            combo_faculdade.addItem(rs.getString("NOME"));
+        }
+        
+        rs = sql.listar_escolas();
+        while (rs.next()) {
+            combo_escola.addItem(rs.getString("NOME"));
+        }
+        
     }
 
     /**
@@ -74,30 +94,62 @@ public class Add_Universitario extends javax.swing.JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        MaskFormatter maskData = new MaskFormatter("##/##/####");
+        MaskFormatter maskFone = new MaskFormatter("(##)####-####");
+
         maskData.install(text_nascimento);
         maskFone.install(text_telefone);
 
-        ComandosSQL db = new ComandosSQL();
-        int num = Integer.parseInt(db.getMaxUniversitario());
+        
+        int num = Integer.parseInt(sql.getMaxUniversitario());
         num++;
         String numero = String.valueOf(num);
 
         text_id.setText(numero);
         text_id.setEditable(false);
-
-        rs = db.listar_estados();
-        while (rs.next()) {
-            combo_estado.addItem(rs.getString("NOME"));
-        }
-
-        rs = db.listar_cidades();
-        while (rs.next()) {
-            combo_cidades.addItem(rs.getString("NOME"));
-        }
         
-        rs = db.listar_faculdades();
+        listar();
+
+    }
+
+    public Add_Universitario(String id) throws SQLException, ClassNotFoundException, ParseException {
+        initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
+
+        MaskFormatter maskData = new MaskFormatter("##/##/####");
+        MaskFormatter maskFone = new MaskFormatter("(##)####-####");
+
+        maskData.install(text_nascimento);
+        maskFone.install(text_telefone);
+        
+        listar();
+        
+        ResultSet rs;
+        rs = sql.search_id_uni(id);
+
         while (rs.next()) {
-            combo_faculdade.addItem(rs.getString("NOME"));
+            text_id.setText(rs.getString(1));
+            text_nome.setText(rs.getString(2));
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            //System.out.println(dateFormat.format(rs.getDate(3)));
+            text_nascimento.setText(dateFormat.format(rs.getDate(3)));
+            text_telefone.setText(rs.getString(4));
+            combo_dia.setSelectedItem(rs.getString(5));
+            text_rua.setText(rs.getString(6));
+            text_numero.setText(rs.getString(7));
+            text_complemento.setText(rs.getString(8));
+            text_bairro.setText(rs.getString(9));
+            String cidade = sql.busca_nomecidade(rs.getInt(10));
+            combo_cidades.setSelectedItem(cidade);
+            combo_estado.setSelectedItem(rs.getString(11));
+            text_pais.setText(rs.getString(12));
+            String faculdade = sql.busca_nomecidade(rs.getInt(15));
+            combo_faculdade.setSelectedItem(faculdade);
+            combo_curso.setSelectedItem(rs.getString(16));
+            String escola = sql.busca_nomeescola(rs.getInt(17));
+            combo_escola.setSelectedItem(escola);
         }
     }
 
@@ -397,7 +449,7 @@ public class Add_Universitario extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         String faculdade = (String) combo_faculdade.getSelectedItem();
         try {
             idfaculdade = sql.busca_idcidade(faculdade);
@@ -405,25 +457,30 @@ public class Add_Universitario extends javax.swing.JFrame {
             Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        id          = Integer.parseInt(text_id.getText());
-        dia         = (String) combo_dia.getSelectedItem();
-        nome        = text_nome.getText();
-        
+        String escola = (String) combo_escola.getSelectedItem();
         try {
-            nasc        = formatData(text_nascimento.getText());
+            idescola = sql.busca_idescola(escola);
         } catch (SQLException ex) {
             Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        rua         = text_rua.getText();
-        numero      = Integer.parseInt(text_numero.getText());
+
+        id = Integer.parseInt(text_id.getText());
+        dia = (String) combo_dia.getSelectedItem();
+        nome = text_nome.getText();
+
+        try {
+            nasc = formatData(text_nascimento.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        rua = text_rua.getText();
+        numero = Integer.parseInt(text_numero.getText());
         complemento = text_complemento.getText();
-        bairro      = text_bairro.getText();
-        estado      = (String) combo_estado.getSelectedItem();
-        pais        = text_pais.getText();
-        fone        = text_telefone.getText();
-        
-        
+        bairro = text_bairro.getText();
+        estado = (String) combo_estado.getSelectedItem();
+        pais = text_pais.getText();
+        fone = text_telefone.getText();
 
 //        File file = new File(foto);
 //        try {
@@ -435,11 +492,10 @@ public class Add_Universitario extends javax.swing.JFrame {
 //
 //        String query = "INSERT INTO UNIVERSITARIOS(nome, nasc, telefone, dia, rua, numero, complemento, bairro, idcidade, foto) VALUES"
 //                + "('" + nome + "','" + nasc + "','" + fone + "','" + dia + "','" + rua + "'," + numero + ",'" + complemento + "','" + bairro + "'," + idcidade + ",LOAD_FILE(" + foto + "));";
-
         if (foto == null) {
             //System.out.println(query);
             System.out.println("foto está nula");
-            sql.add_universitario(nome, nasc, fone, dia, rua, numero, complemento, bairro, idcidade, idfaculdade);
+            sql.add_universitario(nome, nasc, fone, dia, rua, numero, complemento, bairro, idcidade, idfaculdade, idescola);
             JOptionPane.showMessageDialog(null, "Universitário incluido com sucesso !", "Sucesso !", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         } else {
@@ -540,8 +596,7 @@ public class Add_Universitario extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_Cancelar;
