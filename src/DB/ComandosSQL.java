@@ -64,10 +64,26 @@ public class ComandosSQL {
     /**
      * *****************************************************************************************
      */
-    public void update_universitarios(int codigo, String nome, String login, String nasc, String dia) {
+    public void update_universitario(int codigo, String nome, String login, String nasc, String dia) {
         if (db.connect()) {
             query = "UPDATE UNIVERSITARIOS set NOME = '" + nome + "', LOGIN = '" + login + "', NASCIMENTO = '" + nasc + "', DIA = '" + dia + "'"
                     + "WHERE CODIGO = '" + codigo + "';";
+            db.inserir(query);
+        }
+    }
+    
+    public void update_universitario(int id, String nome, String nasc, String fone, String dia, String rua, int numero, String complemento, String bairro, int idcidade, int idfaculdade, int idescola) {
+        if (db.connect()) {
+            query = "UPDATE UNIVERSITARIOS SET NOME='" + nome + "', NASC='" + nasc + "', TELEFONE='" + fone + "', DIA='" + dia + "', RUA='" + rua + "', NUMERO=" + numero + ", COMPLEMENTO='" + complemento + "', BAIRRO='" + bairro + "', IDCIDADE=" + idcidade + ", IDFACULDADE=" + idfaculdade + ", IDESCOLA=" + idescola + " WHERE ID=" + id + ";";
+            System.out.println(query);
+            db.inserir(query);
+        }
+    }
+    
+    public void update_universitario_foto(int id, String nome, String nasc, String fone, String dia, String rua, int numero, String complemento, String bairro, int idcidade, String foto, int idfaculdade, int idescola) {
+        if (db.connect()) {
+            query = "UPDATE UNIVERSITARIOS SET NOME='" + nome + "', NASC='" + nasc + "', TELEFONE='" + fone + "', DIA='" + dia + "', RUA='" + rua + "', NUMERO=" + numero + ", COMPLEMENTO='" + complemento + "', BAIRRO='" + bairro + "', IDCIDADE=" + idcidade + ", IDFACULDADE=" + idfaculdade + ", IDESCOLA=" + idescola + " WHERE ID=" + id + ";";
+            System.out.println(query);
             db.inserir(query);
         }
     }
@@ -345,7 +361,7 @@ public class ComandosSQL {
      */
     public ResultSet getUniv() {
         if (db.connect()) {
-            query = "SELECT U.ID ID, U.NOME UNI, E.NOME ESCOLA, U.DIA DIA FROM UNIVERSITARIOS U JOIN ESCOLAS E ON U.IDESCOLA = E.ID;";
+            query = "SELECT U.ID ID, U.NOME UNI, U.DIA DIA, E.NOME ESCOLA, F.NOME FACULDADE FROM UNIVERSITARIOS U JOIN ESCOLAS E ON U.IDESCOLA = E.ID JOIN FACULDADES F ON U.IDFACULDADE = F.ID;";
             rs = db.executar(query);
         }
         return rs;

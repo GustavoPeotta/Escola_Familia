@@ -185,7 +185,7 @@ public class Edit_Universitario extends javax.swing.JFrame {
         String login = text_login.getText();
         String nasc = text_nascimento.getText();
         String dia = (String) text_dia.getSelectedItem();
-        sql.update_universitarios(cod, nome, login, nasc, dia);
+        sql.update_universitario(cod, nome, login, nasc, dia);
         System.out.println("Update feito");
         JOptionPane.showMessageDialog(null, "Universitário atualizado com sucesso !", "Atualização", JOptionPane.INFORMATION_MESSAGE);
         dispose();

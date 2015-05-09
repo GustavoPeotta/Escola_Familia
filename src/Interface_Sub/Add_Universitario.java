@@ -443,6 +443,18 @@ public class Add_Universitario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botao_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_ConfirmarActionPerformed
+        
+        id          = Integer.parseInt(text_id.getText());
+        rua         = text_rua.getText();
+        numero      = Integer.parseInt(text_numero.getText());
+        complemento = text_complemento.getText();
+        bairro      = text_bairro.getText();
+        estado      = (String) combo_estado.getSelectedItem();
+        pais        = text_pais.getText();
+        fone        = text_telefone.getText();
+        dia         = (String) combo_dia.getSelectedItem();
+        nome        = text_nome.getText();
+        
         String city = (String) combo_cidades.getSelectedItem();
         try {
             idcidade = sql.busca_idcidade(city);
@@ -452,7 +464,7 @@ public class Add_Universitario extends javax.swing.JFrame {
 
         String faculdade = (String) combo_faculdade.getSelectedItem();
         try {
-            idfaculdade = sql.busca_idcidade(faculdade);
+            idfaculdade = sql.busca_idfaculdade(faculdade);
         } catch (SQLException ex) {
             Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -464,44 +476,23 @@ public class Add_Universitario extends javax.swing.JFrame {
             Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        id = Integer.parseInt(text_id.getText());
-        dia = (String) combo_dia.getSelectedItem();
-        nome = text_nome.getText();
-
         try {
             nasc = formatData(text_nascimento.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        rua = text_rua.getText();
-        numero = Integer.parseInt(text_numero.getText());
-        complemento = text_complemento.getText();
-        bairro = text_bairro.getText();
-        estado = (String) combo_estado.getSelectedItem();
-        pais = text_pais.getText();
-        fone = text_telefone.getText();
-
-//        File file = new File(foto);
-//        try {
-//            FileInputStream inputStream = new FileInputStream(file);
-//            System.out.println(inputStream);
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        String query = "INSERT INTO UNIVERSITARIOS(nome, nasc, telefone, dia, rua, numero, complemento, bairro, idcidade, foto) VALUES"
-//                + "('" + nome + "','" + nasc + "','" + fone + "','" + dia + "','" + rua + "'," + numero + ",'" + complemento + "','" + bairro + "'," + idcidade + ",LOAD_FILE(" + foto + "));";
+        
+        
         if (foto == null) {
             //System.out.println(query);
             System.out.println("foto está nula");
-            sql.add_universitario(nome, nasc, fone, dia, rua, numero, complemento, bairro, idcidade, idfaculdade, idescola);
+            sql.update_universitario(id, nome, nasc, fone, dia, rua, numero, complemento, bairro, idcidade, idfaculdade, idescola);
             JOptionPane.showMessageDialog(null, "Universitário incluido com sucesso !", "Sucesso !", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         } else {
             //System.out.println(query);
             System.out.println("foto NÃO esta nula");
-            sql.add_universitario(nome, nasc, fone, dia, rua, numero, complemento, bairro, idcidade, foto, idfaculdade);
+            sql.update_universitario_foto(id, nome, nasc, fone, dia, rua, numero, complemento, bairro, idcidade, foto, idfaculdade, idescola);
             JOptionPane.showMessageDialog(null, "Universitário incluido com sucesso !", "Sucesso !", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         }

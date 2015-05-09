@@ -26,7 +26,7 @@ public class Inicio extends JFrame {
     MySQL db = new MySQL("localhost", "iescola", "root", "");
     ComandosSQL comandos = new ComandosSQL();
 
-    String uni_id, uni_nome, uni_escola, uni_nasc, uni_dia;
+    String uni_id, uni_nome, uni_escola, uni_faculdade, uni_dia;
     String proj_id, proj_nome, proj_organizador, proj_inicio, proj_fim;
     String folga_id, folga_data, folga_inclusao, folga_iduni, folga_escola;
 
@@ -165,59 +165,59 @@ public class Inicio extends JFrame {
 
         table_universitario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Escola", "Dia"
+                "ID", "Nome", "Dia", "Escola", "Faculdade"
             }
         ){
             Class[] types = new Class [] {
@@ -927,7 +927,7 @@ public class Inicio extends JFrame {
             String login = String.valueOf(table_universitario.getValueAt(linha, 2));
             String nasc = String.valueOf(table_universitario.getValueAt(linha, 3));
             String dia = String.valueOf(table_universitario.getValueAt(linha, 4));
-
+            
             Edit_Universitario uni = new Edit_Universitario(cod, nome, login, nasc, dia);
             uni.setVisible(true);
         } else if (tabela == 1) {
@@ -1056,15 +1056,18 @@ public class Inicio extends JFrame {
             try {
                 while (rs.next()) {
                     uni_id = rs.getString("ID");
-                    uni_nome = rs.getString("NOME");
-                    uni_escola = rs.getString("NOME");
+                    uni_nome = rs.getString("UNI");
                     uni_dia = rs.getString("DIA");
+                    uni_escola = rs.getString("ESCOLA");
+                    uni_faculdade = rs.getString("FACULDADE");
+                    
                     //valor, linha, coluna
                     table_universitario.setValueAt(uni_id, i, 0);
                     table_universitario.setValueAt(uni_nome, i, 1);
-                    table_universitario.setValueAt(uni_escola, i, 2);
-                    table_universitario.setValueAt(uni_nasc, i, 3);
-                    table_universitario.setValueAt(uni_dia, i, 4);
+                    table_universitario.setValueAt(uni_dia, i, 2);
+                    table_universitario.setValueAt(uni_escola, i, 3);
+                    table_universitario.setValueAt(uni_faculdade, i, 4);
+                    
                     i++;
                 }
             } catch (SQLException ex) {
@@ -1077,13 +1080,17 @@ public class Inicio extends JFrame {
                 while (rs.next()) {
                     uni_id = rs.getString("ID");
                     uni_nome = rs.getString("UNI");
-                    uni_escola = rs.getString("ESCOLA");
                     uni_dia = rs.getString("DIA");
+                    uni_escola = rs.getString("ESCOLA");
+                    uni_faculdade = rs.getString("FACULDADE");
+                    
                     //valor, linha, coluna
                     table_universitario.setValueAt(uni_id, i, 0);
                     table_universitario.setValueAt(uni_nome, i, 1);
-                    table_universitario.setValueAt(uni_escola, i, 2);
-                    table_universitario.setValueAt(uni_dia, i, 3);
+                    table_universitario.setValueAt(uni_dia, i, 2);
+                    table_universitario.setValueAt(uni_escola, i, 3);
+                    table_universitario.setValueAt(uni_faculdade, i, 4);
+                    
                     i++;
                 }
             } catch (SQLException ex) {
