@@ -103,7 +103,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="label_foto" pref="123" max="32767" attributes="0"/>
+                              <Component id="label_foto" pref="126" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -135,12 +135,14 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-              <Component id="botao_Confirmar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="botao_limpar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="botao_Criar" min="-2" pref="68" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="botao_Salvar" min="-2" pref="71" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="botao_limpar" min="-2" pref="71" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="botao_Cancelar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -230,9 +232,10 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botao_Confirmar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botao_Salvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botao_limpar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botao_Cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botao_Criar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -274,12 +277,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="botao_Confirmar">
+    <Component class="javax.swing.JButton" name="botao_Salvar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Confirmar"/>
+        <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_ConfirmarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_SalvarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botao_Cancelar">
@@ -424,6 +427,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Escola"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botao_Criar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Criar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_CriarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

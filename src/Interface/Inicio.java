@@ -1185,13 +1185,11 @@ public class Inicio extends JFrame {
     }//GEN-LAST:event_btn_folActionPerformed
 
     private void btn_add_uniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_uniActionPerformed
-        Add_Universitario add_uni = null;
         try {
-            add_uni = new Add_Universitario();
+            new Add_Universitario();
         } catch (ParseException | ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        add_uni.setVisible(true);
     }//GEN-LAST:event_btn_add_uniActionPerformed
 
     private void btn_add_faculActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_faculActionPerformed

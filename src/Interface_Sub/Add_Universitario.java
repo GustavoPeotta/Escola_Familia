@@ -11,7 +11,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -49,6 +48,8 @@ public class Add_Universitario extends javax.swing.JFrame {
     private String estado;
     private String pais;
     private String fone;
+    //Status 0=create, 1=update
+    public boolean existe_uni;
 
     private String formatData(String data) throws SQLException {
         //18/19/2000
@@ -87,26 +88,32 @@ public class Add_Universitario extends javax.swing.JFrame {
 
     /**
      * Creates new form Add_Universitario
+     * @param status
+     * @throws java.text.ParseException
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     public Add_Universitario() throws ParseException, ClassNotFoundException, SQLException {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
+        setVisible(true);
+        botao_Salvar.setVisible(false);
+        
+        MaskFormatter maskData  = new MaskFormatter("##/##/####");
+        MaskFormatter maskFone  = new MaskFormatter("(##)####-####");
 
-        MaskFormatter maskData = new MaskFormatter("##/##/####");
-        MaskFormatter maskFone = new MaskFormatter("(##)####-####");
-
-        maskData.install(text_nascimento);
-        maskFone.install(text_telefone);
+        maskData            .install(text_nascimento);
+        maskFone            .install(text_telefone);
 
         
-        int num = Integer.parseInt(sql.getMaxUniversitario());
+        int num             = Integer.parseInt(sql.getMaxUniversitario());
         num++;
-        String numero = String.valueOf(num);
+        String numero       = String.valueOf(num);
 
-        text_id.setText(numero);
-        text_id.setEditable(false);
+        text_id             .setText(numero);
+        text_id             .setEditable(false);
         
         listar();
 
@@ -117,39 +124,41 @@ public class Add_Universitario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
-
-        MaskFormatter maskData = new MaskFormatter("##/##/####");
-        MaskFormatter maskFone = new MaskFormatter("(##)####-####");
-
-        maskData.install(text_nascimento);
-        maskFone.install(text_telefone);
+        setVisible(true);
+        botao_Criar.setVisible(false);
+        
+        MaskFormatter maskData  = new MaskFormatter("##/##/####");
+        MaskFormatter maskFone  = new MaskFormatter("(##)####-####");
+        DateFormat dateFormat   = new SimpleDateFormat("dd/MM/yyyy");
+        
+        maskData            .install(text_nascimento);
+        maskFone            .install(text_telefone);
         
         listar();
         
         ResultSet rs;
-        rs = sql.search_id_uni(id);
+        rs                  = sql.search_id_uni(id);
 
         while (rs.next()) {
-            text_id.setText(rs.getString(1));
-            text_nome.setText(rs.getString(2));
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            //System.out.println(dateFormat.format(rs.getDate(3)));
-            text_nascimento.setText(dateFormat.format(rs.getDate(3)));
-            text_telefone.setText(rs.getString(4));
-            combo_dia.setSelectedItem(rs.getString(5));
-            text_rua.setText(rs.getString(6));
-            text_numero.setText(rs.getString(7));
+            text_id         .setText(rs.getString(1));
+            text_nome       .setText(rs.getString(2));
+            
+            text_nascimento .setText(dateFormat.format(rs.getDate(3)));
+            text_telefone   .setText(rs.getString(4));
+            combo_dia       .setSelectedItem(rs.getString(5));
+            text_rua        .setText(rs.getString(6));
+            text_numero     .setText(rs.getString(7));
             text_complemento.setText(rs.getString(8));
-            text_bairro.setText(rs.getString(9));
-            String cidade = sql.busca_nomecidade(rs.getInt(10));
-            combo_cidades.setSelectedItem(cidade);
-            combo_estado.setSelectedItem(rs.getString(11));
-            text_pais.setText(rs.getString(12));
+            text_bairro     .setText(rs.getString(9));
+            String cidade   = sql.busca_nomecidade(rs.getInt(10));
+            combo_cidades   .setSelectedItem(cidade);
+            combo_estado    .setSelectedItem(rs.getString(11));
+            text_pais       .setText(rs.getString(12));
             String faculdade = sql.busca_nomecidade(rs.getInt(15));
-            combo_faculdade.setSelectedItem(faculdade);
-            combo_curso.setSelectedItem(rs.getString(16));
-            String escola = sql.busca_nomeescola(rs.getInt(17));
-            combo_escola.setSelectedItem(escola);
+            combo_faculdade .setSelectedItem(faculdade);
+            combo_curso     .setSelectedItem(rs.getString(16));
+            String escola   = sql.busca_nomeescola(rs.getInt(17));
+            combo_escola    .setSelectedItem(escola);
         }
     }
 
@@ -170,7 +179,7 @@ public class Add_Universitario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         label_dia = new javax.swing.JLabel();
         combo_dia = new javax.swing.JComboBox();
-        botao_Confirmar = new javax.swing.JButton();
+        botao_Salvar = new javax.swing.JButton();
         botao_Cancelar = new javax.swing.JButton();
         text_nascimento = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -198,6 +207,7 @@ public class Add_Universitario extends javax.swing.JFrame {
         combo_curso = new javax.swing.JComboBox();
         combo_escola = new javax.swing.JComboBox();
         jLabel13 = new javax.swing.JLabel();
+        botao_Criar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -211,10 +221,10 @@ public class Add_Universitario extends javax.swing.JFrame {
 
         combo_dia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sábado", "Domingo" }));
 
-        botao_Confirmar.setText("Confirmar");
-        botao_Confirmar.addActionListener(new java.awt.event.ActionListener() {
+        botao_Salvar.setText("Salvar");
+        botao_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_ConfirmarActionPerformed(evt);
+                botao_SalvarActionPerformed(evt);
             }
         });
 
@@ -272,6 +282,13 @@ public class Add_Universitario extends javax.swing.JFrame {
         jLabel5.setText("Curso");
 
         jLabel13.setText("Escola");
+
+        botao_Criar.setText("Criar");
+        botao_Criar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botao_CriarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -335,7 +352,7 @@ public class Add_Universitario extends javax.swing.JFrame {
                                 .addComponent(botao_escolherfoto)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(label_foto, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                                .addComponent(label_foto, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                 .addContainerGap())))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -357,12 +374,14 @@ public class Add_Universitario extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(botao_Confirmar)
-                .addGap(18, 18, 18)
-                .addComponent(botao_limpar)
-                .addGap(18, 18, 18)
+                .addComponent(botao_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botao_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botao_limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botao_Cancelar)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,55 +452,41 @@ public class Add_Universitario extends javax.swing.JFrame {
                     .addComponent(text_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botao_Confirmar)
+                    .addComponent(botao_Salvar)
                     .addComponent(botao_limpar)
-                    .addComponent(botao_Cancelar))
+                    .addComponent(botao_Cancelar)
+                    .addComponent(botao_Criar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botao_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_ConfirmarActionPerformed
+    private void botao_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_SalvarActionPerformed
         
-        id          = Integer.parseInt(text_id.getText());
-        rua         = text_rua.getText();
-        numero      = Integer.parseInt(text_numero.getText());
-        complemento = text_complemento.getText();
-        bairro      = text_bairro.getText();
-        estado      = (String) combo_estado.getSelectedItem();
-        pais        = text_pais.getText();
-        fone        = text_telefone.getText();
-        dia         = (String) combo_dia.getSelectedItem();
-        nome        = text_nome.getText();
+        id                  = Integer.parseInt(text_id.getText());
+        rua                 = text_rua.getText();
+        numero              = Integer.parseInt(text_numero.getText());
+        complemento         = text_complemento.getText();
+        bairro              = text_bairro.getText();
+        estado              = (String) combo_estado.getSelectedItem();
+        pais                = text_pais.getText();
+        fone                = text_telefone.getText();
+        dia                 = (String) combo_dia.getSelectedItem();
+        nome                = text_nome.getText();
         
-        String city = (String) combo_cidades.getSelectedItem();
+        String city         = (String) combo_cidades.getSelectedItem();
+        String faculdade    = (String) combo_faculdade.getSelectedItem();
+        String escola       = (String) combo_escola.getSelectedItem();
+        
         try {
-            idcidade = sql.busca_idcidade(city);
+            idcidade        = sql.busca_idcidade(city);
+            idfaculdade     = sql.busca_idfaculdade(faculdade);
+            idescola        = sql.busca_idescola(escola);
+            nasc            = formatData(text_nascimento.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        String faculdade = (String) combo_faculdade.getSelectedItem();
-        try {
-            idfaculdade = sql.busca_idfaculdade(faculdade);
-        } catch (SQLException ex) {
-            Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        String escola = (String) combo_escola.getSelectedItem();
-        try {
-            idescola = sql.busca_idescola(escola);
-        } catch (SQLException ex) {
-            Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try {
-            nasc = formatData(text_nascimento.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         
         if (foto == null) {
             //System.out.println(query);
@@ -496,8 +501,7 @@ public class Add_Universitario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Universitário incluido com sucesso !", "Sucesso !", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         }
-
-    }//GEN-LAST:event_botao_ConfirmarActionPerformed
+    }//GEN-LAST:event_botao_SalvarActionPerformed
 
     private void botao_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_CancelarActionPerformed
         dispose();
@@ -545,6 +549,48 @@ public class Add_Universitario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botao_escolherfotoActionPerformed
 
+    private void botao_CriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_CriarActionPerformed
+        id                  = Integer.parseInt(text_id.getText());
+        rua                 = text_rua.getText();
+        numero              = Integer.parseInt(text_numero.getText());
+        complemento         = text_complemento.getText();
+        bairro              = text_bairro.getText();
+        estado              = (String) combo_estado.getSelectedItem();
+        pais                = text_pais.getText();
+        fone                = text_telefone.getText();
+        dia                 = (String) combo_dia.getSelectedItem();
+        nome                = text_nome.getText();
+        
+        String city         = (String) combo_cidades.getSelectedItem();
+        String faculdade    = (String) combo_faculdade.getSelectedItem();
+        String escola       = (String) combo_escola.getSelectedItem();
+        
+        try {
+            idcidade        = sql.busca_idcidade(city);
+            idfaculdade     = sql.busca_idfaculdade(faculdade);
+            idescola        = sql.busca_idescola(escola);
+            nasc            = formatData(text_nascimento.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(Add_Universitario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (foto == null) {
+            //System.out.println(query);
+            System.out.println("foto está nula");
+            sql.add_universitario(id, nome, nasc, fone, dia, rua, numero, complemento, bairro, idcidade, idfaculdade, idescola);
+            JOptionPane.showMessageDialog(null, "Universitário incluido com sucesso !", "Sucesso !", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+        } else {
+            //System.out.println(query);
+            System.out.println("foto NÃO esta nula");
+            sql.add_universitario(id, nome, nasc, fone, dia, rua, numero, complemento, bairro, idcidade, foto, idfaculdade, idescola);
+            JOptionPane.showMessageDialog(null, "Universitário incluido com sucesso !", "Sucesso !", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+        }
+
+
+    }//GEN-LAST:event_botao_CriarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -591,7 +637,8 @@ public class Add_Universitario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_Cancelar;
-    private javax.swing.JButton botao_Confirmar;
+    private javax.swing.JButton botao_Criar;
+    private javax.swing.JButton botao_Salvar;
     private javax.swing.JButton botao_escolherfoto;
     private javax.swing.JButton botao_limpar;
     private javax.swing.JComboBox combo_cidades;

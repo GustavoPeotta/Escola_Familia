@@ -19,7 +19,7 @@ public class ComandosSQL {
     /**
      * *****************************************************************************************
      */
-    public void add_universitario(String nome, String nasc, String fone, String dia, String rua, int numero, String complemento, String bairro, int cidade, int faculdade, int escola) {
+    public void add_universitario(int id, String nome, String nasc, String fone, String dia, String rua, int numero, String complemento, String bairro, int cidade, int faculdade, int escola) {
         if (db.connect()) {
             query = "INSERT INTO UNIVERSITARIOS(nome, nasc, telefone, dia, rua, numero, complemento, bairro, idcidade, idfaculdade, idescola) VALUES"
                     + "('" + nome + "','" + nasc + "','" + fone + "','" + dia + "','" + rua + "'," + numero + ",'" + complemento + "','" + bairro + "'," + cidade + ", "+ faculdade +", "+ escola +");";
@@ -28,7 +28,7 @@ public class ComandosSQL {
         }
     }
 
-    public void add_universitario(String nome, String nasc, String fone, String dia, String rua, int numero, String complemento, String bairro, int cidade, String foto, int faculdade) {
+    public void add_universitario(int id, String nome, String nasc, String fone, String dia, String rua, int numero, String complemento, String bairro, int cidade, String foto, int faculdade, int escola) {
         if (db.connect()) {
             query = "INSERT INTO UNIVERSITARIOS(nome, nasc, telefone, dia, rua, numero, complemento, bairro, idcidade, foto, idfaculdade) VALUES"
                     + "('" + nome + "','" + nasc + "','" + fone + "','" + dia + "','" + rua + "'," + numero + ",'" + complemento + "','" + bairro + "'," + cidade + ",LOAD_FILE(" + foto + "), "+ faculdade +");";
