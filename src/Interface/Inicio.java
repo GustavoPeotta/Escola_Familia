@@ -54,6 +54,8 @@ public class Inicio extends JFrame {
         Tabela.setEnabledAt(1, false);              //Desabilita a aba 1
         Tabela.setEnabledAt(2, false);              //Desabilita a aba 2
         Tabela.setEnabledAt(3, false);              //Desabilita a aba 3
+        Tabela.setEnabledAt(4, false);              //Desabilita a aba 4
+        Tabela.setEnabledAt(5, false);              //Desabilita a aba 5
         //Tabela.setBackgroundAt(1, Color.BLUE);    //Muda cor da aba
 
         table_universitario.isCellEditable(0, 0);
@@ -91,11 +93,11 @@ public class Inicio extends JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         table_escola = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table_faculdade = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
         table_Folgas = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        table_coordenador = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
@@ -371,60 +373,62 @@ public class Inicio extends JFrame {
 
     Tabela.addTab("Escolas", jScrollPane4);
 
-    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+    table_faculdade.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null}
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null},
+            {null, null},{null, null}
         },
         new String [] {
-            "Nº Sequência", "Nome", "Escola", "Data da Folga", "Data da Inclusão"
+            "ID", "Nome"
         }
     ){
         Class[] types = new Class [] {
@@ -440,7 +444,7 @@ public class Inicio extends JFrame {
         }
 
     });
-    jScrollPane1.setViewportView(jTable1);
+    jScrollPane1.setViewportView(table_faculdade);
 
     Tabela.addTab("Faculdade", jScrollPane1);
 
@@ -522,60 +526,61 @@ public class Inicio extends JFrame {
 
     Tabela.addTab("Folgas", jScrollPane5);
 
-    jTable2.setModel(new javax.swing.table.DefaultTableModel(
+    table_coordenador.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null}
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null},
+            {null, null}
         },
         new String [] {
-            "Nº Sequência", "Nome", "Escola", "Data da Folga", "Data da Inclusão"
+            "ID", "Nome"
         }
     ){
         Class[] types = new Class [] {
@@ -591,7 +596,7 @@ public class Inicio extends JFrame {
         }
 
     });
-    jScrollPane6.setViewportView(jTable2);
+    jScrollPane6.setViewportView(table_coordenador);
 
     Tabela.addTab("Coordenador", jScrollPane6);
 
@@ -699,6 +704,11 @@ public class Inicio extends JFrame {
 
     btn_facul.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
     btn_facul.setText("Faculdade");
+    btn_facul.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_faculActionPerformed(evt);
+        }
+    });
     jMenu6.add(btn_facul);
 
     btn_fol.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
@@ -712,6 +722,11 @@ public class Inicio extends JFrame {
 
     btn_coord.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
     btn_coord.setText("Coordenador");
+    btn_coord.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_coordActionPerformed(evt);
+        }
+    });
     jMenu6.add(btn_coord);
 
     jMenuBar1.add(jMenu6);
@@ -1157,9 +1172,9 @@ public class Inicio extends JFrame {
     }//GEN-LAST:event_btn_escolaActionPerformed
 
     private void btn_folActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_folActionPerformed
-        indiceDeTabela = 3;
+        indiceDeTabela = 4;
         
-        Habilitar_Tabelas(3);
+        Habilitar_Tabelas(4);
         table_Folgas.setVisible(true);
         
         rs = comandos.getFol();
@@ -1215,6 +1230,56 @@ public class Inicio extends JFrame {
         }
         add_folga.setVisible(true);
     }//GEN-LAST:event_btn_add_folgaActionPerformed
+
+    private void btn_faculActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_faculActionPerformed
+        indiceDeTabela = 3;
+        
+        Habilitar_Tabelas(3);
+        table_faculdade.setVisible(true);
+        
+        ResultSet rs = comandos.getFacul();
+        int i = 0;
+
+        try {
+            while (rs.next()) {
+                codigo = rs.getString("ID");
+                nome = rs.getString("NOME");
+                //valor, linha, coluna
+                table_faculdade.setValueAt(codigo, i, 0);
+                table_faculdade.setValueAt(nome, i, 1);
+                i++;
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro de SQL: " + e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btn_faculActionPerformed
+
+    private void btn_coordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_coordActionPerformed
+        indiceDeTabela = 3;
+        
+        Habilitar_Tabelas(5);
+        table_coordenador.setVisible(true);
+        
+        ResultSet rs = comandos.getCoord();
+        int i = 0;
+
+        try {
+            while (rs.next()) {
+                login = rs.getString("USR");
+                nome = rs.getString("NOME");
+                //valor, linha, coluna
+                table_coordenador.setValueAt(login, i, 0);
+                table_coordenador.setValueAt(nome, i, 1);
+                i++;
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro de SQL: " + e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btn_coordActionPerformed
 
     public void limpar_tabela() {
         for (int linha = 0; linha < 30; linha++) {
@@ -1327,11 +1392,11 @@ public class Inicio extends JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable table_Folgas;
     private javax.swing.JTable table_Projetos;
+    private javax.swing.JTable table_coordenador;
     private javax.swing.JTable table_escola;
+    private javax.swing.JTable table_faculdade;
     private javax.swing.JTable table_universitario;
     // End of variables declaration//GEN-END:variables
 }

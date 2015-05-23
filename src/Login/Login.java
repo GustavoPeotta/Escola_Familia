@@ -7,7 +7,6 @@ package Login;
 
 import DB.MySQL;
 import Interface.Inicio;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,7 +32,10 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
-
+        
+        Inicio i = new Inicio();
+        i.setVisible(true);
+        
         label_fundo.add(botao_entrar);
         label_fundo.add(botao_sair);
         label_fundo.add(txt_user);

@@ -382,10 +382,26 @@ public class ComandosSQL {
         }
         return rs;
     }
+    
+    public ResultSet getFacul() {
+        if (db.connect()) {
+            query = "SELECT * FROM FACULDADES";
+            rs = db.executar(query);
+        }
+        return rs;
+    }
 
     public ResultSet getFol() {
         if (db.connect()) {
             query = "SELECT F.ID_FOLGAS ID, U.NOME UNI, E.NOME ESCOLA, F.DATA_FOLGA FOLGA, F.DATA_INCLUSAO INCLUSAO FROM FOLGAS F JOIN UNIVERSITARIOS U ON F.ID_UNIVERSITARIO = U.ID JOIN ESCOLAS E ON U.IDESCOLA = E.ID";
+            rs = db.executar(query);
+        }
+        return rs;
+    }
+    
+    public ResultSet getCoord() {
+        if (db.connect()) {
+            query = "SELECT * FROM LOGIN";
             rs = db.executar(query);
         }
         return rs;
