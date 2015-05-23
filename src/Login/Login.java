@@ -33,9 +33,6 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         
-        Inicio i = new Inicio();
-        i.setVisible(true);
-        
         label_fundo.add(botao_entrar);
         label_fundo.add(botao_sair);
         label_fundo.add(txt_user);
