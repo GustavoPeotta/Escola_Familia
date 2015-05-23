@@ -130,13 +130,16 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_uniActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="btn_facul">
+            <MenuItem class="javax.swing.JMenuItem" name="btn_proj">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+F"/>
+                  <KeyStroke key="Ctrl+P"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Faculdade"/>
+                <Property name="text" type="java.lang.String" value="Projeto"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_projActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="btn_escola">
               <Properties>
@@ -149,16 +152,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_escolaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="btn_proj">
+            <MenuItem class="javax.swing.JMenuItem" name="btn_facul">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+P"/>
+                  <KeyStroke key="Ctrl+F"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Projeto"/>
+                <Property name="text" type="java.lang.String" value="Faculdade"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_projActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="btn_fol">
               <Properties>

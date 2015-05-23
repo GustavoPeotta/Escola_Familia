@@ -112,9 +112,9 @@ public class Inicio extends JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         btn_uni = new javax.swing.JMenuItem();
-        btn_facul = new javax.swing.JMenuItem();
-        btn_escola = new javax.swing.JMenuItem();
         btn_proj = new javax.swing.JMenuItem();
+        btn_escola = new javax.swing.JMenuItem();
+        btn_facul = new javax.swing.JMenuItem();
         btn_fol = new javax.swing.JMenuItem();
         btn_coord = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -679,9 +679,14 @@ public class Inicio extends JFrame {
     });
     jMenu6.add(btn_uni);
 
-    btn_facul.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-    btn_facul.setText("Faculdade");
-    jMenu6.add(btn_facul);
+    btn_proj.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+    btn_proj.setText("Projeto");
+    btn_proj.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_projActionPerformed(evt);
+        }
+    });
+    jMenu6.add(btn_proj);
 
     btn_escola.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
     btn_escola.setText("Escola");
@@ -692,14 +697,9 @@ public class Inicio extends JFrame {
     });
     jMenu6.add(btn_escola);
 
-    btn_proj.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-    btn_proj.setText("Projeto");
-    btn_proj.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btn_projActionPerformed(evt);
-        }
-    });
-    jMenu6.add(btn_proj);
+    btn_facul.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+    btn_facul.setText("Faculdade");
+    jMenu6.add(btn_facul);
 
     btn_fol.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
     btn_fol.setText("Folga");
