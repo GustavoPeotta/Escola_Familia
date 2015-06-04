@@ -130,4 +130,15 @@ public class MySQL {
             e.printStackTrace();
         }
     }
+    
+    public void Deletar(String query) {
+        Statement st;
+        try {
+            st = this.c.createStatement();
+            st.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }

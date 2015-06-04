@@ -190,8 +190,6 @@ public class Edit_Universitario extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Universitário atualizado com sucesso !", "Atualização", JOptionPane.INFORMATION_MESSAGE);
         dispose();
         
-        Inicio in = new Inicio();
-        in.limpar_tabela();
         
     }//GEN-LAST:event_botao_confirmarActionPerformed
 

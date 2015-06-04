@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Inicio extends JFrame {
 
@@ -841,8 +842,8 @@ public class Inicio extends JFrame {
                 opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir este registro", "Atenção", 1);
 
                 if (opcao == 0) {
-                    int cod = Integer.parseInt(String.valueOf(table_universitario.getValueAt(linha, 0)));
-                    sql.delete_line_uni(cod);
+                    int id = Integer.parseInt(String.valueOf(table_universitario.getValueAt(linha, 0)));
+                    sql.delete_line_uni(id);
                     System.out.println("Linha universitarios excluida");
                 } else {
                     dispose();
@@ -903,8 +904,7 @@ public class Inicio extends JFrame {
             default:
                 break;
         }
-        limpar_tabela();
-        in.btn_uniActionPerformed(evt);
+        //in.btn_uniActionPerformed(evt);
 
     }//GEN-LAST:event_botao_ExcluirActionPerformed
 
@@ -1009,14 +1009,14 @@ public class Inicio extends JFrame {
             int codigo = table_Projetos.getSelectedRow();
             System.out.println("\nCódigo selecionado: " + codigo);
 
-            int cod = Integer.parseInt(String.valueOf(table_Projetos.getValueAt(codigo, 0)));
-            String nome = String.valueOf(table_Projetos.getValueAt(codigo, 1));
-            String login = String.valueOf(table_Projetos.getValueAt(codigo, 2));
-            String nasc = String.valueOf(table_Projetos.getValueAt(codigo, 3));
-            String dia = String.valueOf(table_Projetos.getValueAt(codigo, 4));
-
-            Edit_Projeto editar = new Edit_Projeto(cod, nome, login, nasc, dia);
-            editar.setVisible(true);
+            String id = String.valueOf(table_Projetos.getValueAt(codigo, 0));
+            
+            try {
+                Add_Projeto proj = new Add_Projeto(id);
+                proj.setVisible(true);
+            } catch (SQLException | ClassNotFoundException | ParseException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_table_ProjetosMouseClicked
 
@@ -1060,6 +1060,7 @@ public class Inicio extends JFrame {
     }//GEN-LAST:event_table_FolgasMouseClicked
 
     private void btn_uniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uniActionPerformed
+        
         indiceDeTabela = 0;
         
         Habilitar_Tabelas(0);
@@ -1257,7 +1258,7 @@ public class Inicio extends JFrame {
     }//GEN-LAST:event_btn_faculActionPerformed
 
     private void btn_coordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_coordActionPerformed
-        indiceDeTabela = 3;
+        indiceDeTabela = 5;
         
         Habilitar_Tabelas(5);
         table_coordenador.setVisible(true);
@@ -1281,28 +1282,6 @@ public class Inicio extends JFrame {
         }
     }//GEN-LAST:event_btn_coordActionPerformed
 
-    public void limpar_tabela() {
-        for (int linha = 0; linha < 30; linha++) {
-            for (int coluna = 0; coluna < 5; coluna++) {
-                table_universitario.setValueAt(null, linha, coluna);
-            }
-        }
-        for (int linha = 0; linha < 30; linha++) {
-            for (int coluna = 0; coluna < 5; coluna++) {
-                table_Projetos.setValueAt(null, linha, coluna);
-            }
-        }
-        for (int linha = 0; linha < 30; linha++) {
-            for (int coluna = 0; coluna < 5; coluna++) {
-                table_escola.setValueAt(null, linha, coluna);
-            }
-        }
-        for (int linha = 0; linha < 30; linha++) {
-            for (int coluna = 0; coluna < 4; coluna++) {
-                table_Folgas.setValueAt(null, linha, coluna);
-            }
-        }
-    }
 
     /**
      * @param args the command line arguments

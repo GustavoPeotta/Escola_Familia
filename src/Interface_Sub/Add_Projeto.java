@@ -7,12 +7,18 @@
 package Interface_Sub;
 
 import DB.ComandosSQL;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -20,29 +26,87 @@ import javax.swing.text.MaskFormatter;
  * @author 30-90042
  */
 public class Add_Projeto extends javax.swing.JFrame {
-
+    ResultSet rs;
+    ComandosSQL sql = new ComandosSQL();
     /**
      * Creates new form Add_Projeto
+     * @throws java.text.ParseException
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     public Add_Projeto() throws ParseException, ClassNotFoundException, SQLException {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
+        botao_salvar.setVisible(false);
         
         MaskFormatter maskData = new MaskFormatter("##/##/####");
         maskData.install(text_ini);
         MaskFormatter maskData1 = new MaskFormatter("##/##/####");
         maskData1.install(text_fim);
         
-        ComandosSQL db = new ComandosSQL();
-        int num = Integer.parseInt(db.getMaxProjetos());
+        int num = sql.getMaxProjetos();
         num++;
         String numero = String.valueOf(num);
         
         text_codigo.setText(numero);
         text_codigo.setEditable(false);
         
+        rs = sql.listar_escolas();
+        while (rs.next()) {
+            combo_escola.addItem(rs.getString("NOME"));
+        }
+        
+    }
+    
+    public Add_Projeto(String id) throws ParseException, ClassNotFoundException, SQLException {
+        initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
+        botao_criar.setVisible(false);
+        
+        MaskFormatter maskData = new MaskFormatter("##/##/####");
+        MaskFormatter maskData1 = new MaskFormatter("##/##/####");
+        DateFormat dateFormat   = new SimpleDateFormat("dd/MM/yyyy");
+        
+        maskData.install(text_ini);
+        maskData1.install(text_fim);
+        
+        ResultSet rs;
+        rs                  = sql.search_id_proj(id);
+        
+        ResultSet rs_escola = sql.listar_escolas();
+        while (rs_escola.next()) {
+            combo_escola.addItem(rs_escola.getString("NOME"));
+        }
+        
+        while (rs.next()) {
+            text_codigo     .setText(rs.getString(1));
+            text_nome       .setText(rs.getString(2));
+            String escola   = sql.busca_nomeescola(rs.getInt(3));
+            System.out.println(escola);
+            combo_escola    .setSelectedItem(escola);
+            String organ    = sql.busca_nomeuniversitario(rs.getInt(4));
+            System.out.println(organ);
+            combo_organizador.setSelectedItem(organ);
+            text_ini        .setText(dateFormat.format(rs.getDate(5)));
+            text_fim        .setText(dateFormat.format(rs.getDate(6)));
+        }
+        
+    }
+    
+    private String formatData(String data) throws SQLException {
+        //18/19/2000
+        System.out.println("O dia é: " + data);
+        String dia = data.substring(0, 2);
+        String mes = data.substring(3, 5);
+        String ano = data.substring(6, 10);
+        String dt = ano + "-" + mes + "-" + dia;
+        System.out.println("Dia:" + dia + "/Mes:" + mes + "/ano:" + ano);
+        System.out.println(dt);
+        return dt;
     }
 
     /**
@@ -59,13 +123,16 @@ public class Add_Projeto extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         text_nome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        text_organizador = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        botao_confirmar = new javax.swing.JButton();
+        botao_criar = new javax.swing.JButton();
         botao_cancelar = new javax.swing.JButton();
         text_ini = new javax.swing.JFormattedTextField();
         text_fim = new javax.swing.JFormattedTextField();
+        jLabel6 = new javax.swing.JLabel();
+        combo_escola = new javax.swing.JComboBox();
+        combo_organizador = new javax.swing.JComboBox();
+        botao_salvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,10 +146,10 @@ public class Add_Projeto extends javax.swing.JFrame {
 
         jLabel5.setText("Data Fim");
 
-        botao_confirmar.setText("Confirmar");
-        botao_confirmar.addActionListener(new java.awt.event.ActionListener() {
+        botao_criar.setText("Criar");
+        botao_criar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_confirmarActionPerformed(evt);
+                botao_criarActionPerformed(evt);
             }
         });
 
@@ -93,42 +160,59 @@ public class Add_Projeto extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Escola");
+
+        combo_escola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_escolaActionPerformed(evt);
+            }
+        });
+
+        botao_salvar.setText("Salvar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(text_organizador, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel4)
+                            .addComponent(text_ini, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(text_ini, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                                .addComponent(jLabel5)
+                                .addGap(104, 104, 104))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(text_fim, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(combo_organizador, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(combo_escola, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(text_codigo))
                                 .addGap(18, 18, 18)
-                                .addComponent(text_fim, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(text_codigo))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE))
-                            .addComponent(text_nome)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(botao_confirmar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botao_cancelar)))
-                .addGap(20, 20, 20))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE))
+                                    .addComponent(text_nome)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(botao_criar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botao_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botao_cancelar))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,40 +225,81 @@ public class Add_Projeto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(text_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(combo_escola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(combo_organizador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(text_organizador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(text_ini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(text_fim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botao_confirmar)
-                    .addComponent(botao_cancelar))
+                    .addComponent(botao_criar)
+                    .addComponent(botao_cancelar)
+                    .addComponent(botao_salvar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botao_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_confirmarActionPerformed
-        int cod = Integer.parseInt(text_codigo.getText());
+    private void botao_criarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_criarActionPerformed
+        int id_escola = 0;
+        int id_organizador = 0;
+        String ini="1900-01-01", fim="1900-01-01";
+        int id = Integer.parseInt(text_codigo.getText());
         String nome = text_nome.getText();
-        String organizador = text_organizador.getText();
-        String ini = text_ini.getText();
-        String fim = text_fim.getText();
+        String nome_escola = (String) combo_escola.getSelectedItem();
+        try {
+            id_escola = sql.busca_idescola(nome_escola);
+        } catch (SQLException ex) {
+            Logger.getLogger(Add_Projeto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String nome_organizador = (String) combo_organizador.getSelectedItem();
+        try {
+            id_organizador = sql.busca_iduniversitario(nome_organizador);
+        } catch (SQLException ex) {
+            Logger.getLogger(Add_Projeto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            ini = formatData(text_ini.getText());
+            fim = formatData(text_fim.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(Add_Projeto.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ComandosSQL banco = new ComandosSQL();
-        banco.add_projeto(cod, nome, organizador, ini, fim);
+        banco.add_projeto(id, nome, id_escola, id_organizador, ini, fim);
         dispose();
-    }//GEN-LAST:event_botao_confirmarActionPerformed
+    }//GEN-LAST:event_botao_criarActionPerformed
 
     private void botao_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_cancelarActionPerformed
         dispose();
     }//GEN-LAST:event_botao_cancelarActionPerformed
+
+    private void combo_escolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_escolaActionPerformed
+        //pega a opcao selecionada
+        String nome_escola = (String) combo_escola.getSelectedItem();  
+        //passa o valor para a funcao que ira' popular o segundo combobox         
+        ResultSet rss = sql.popular_combo_universitarios(nome_escola);
+        combo_organizador.removeAllItems();
+        try {
+            while (rss.next()) {
+                combo_organizador.addItem(rss.getString("NOME"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Add_Projeto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_combo_escolaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,16 +346,19 @@ public class Add_Projeto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_cancelar;
-    private javax.swing.JButton botao_confirmar;
+    private javax.swing.JButton botao_criar;
+    private javax.swing.JButton botao_salvar;
+    private javax.swing.JComboBox combo_escola;
+    private javax.swing.JComboBox combo_organizador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField text_codigo;
     private javax.swing.JFormattedTextField text_fim;
     private javax.swing.JFormattedTextField text_ini;
     private javax.swing.JTextField text_nome;
-    private javax.swing.JTextField text_organizador;
     // End of variables declaration//GEN-END:variables
 }
