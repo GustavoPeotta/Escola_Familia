@@ -28,7 +28,7 @@ public class Inicio extends JFrame {
     ComandosSQL comandos = new ComandosSQL();
 
     String uni_id, uni_nome, uni_escola, uni_faculdade, uni_dia;
-    String proj_id, proj_nome, proj_organizador, proj_inicio, proj_fim;
+    String proj_id, proj_nome, proj_escola, proj_organizador, proj_inicio, proj_fim;
     String folga_id, folga_data, folga_inclusao, folga_iduni, folga_escola;
 
     String query, id, nome, login, dia, nasc, codigo, coordenador, inicio, fim;
@@ -254,30 +254,6 @@ public class Inicio extends JFrame {
             {null, null, null, null, null},
             {null, null, null, null, null},
             {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null}
         },
         new String [] {
             "Código", "Nome", "Organizador", "Inicio", "Fim"
@@ -1122,21 +1098,22 @@ public class Inicio extends JFrame {
         table_Projetos.setVisible(true);
         
         ResultSet rs = comandos.getProj();
-
+        
         int i = 0;
         try {
             while (rs.next()) {
-                proj_id = rs.getString("ID");
-                proj_nome = rs.getString("NOME");
-                proj_organizador = rs.getString("UNI");
-                proj_inicio = formatData(rs.getDate("INI"));
-                proj_fim = formatData(rs.getDate("FIM"));
+                proj_id = rs.getString(1);
+                proj_nome = rs.getString(2);
+                //proj_escola = rs.getString(3);
+                proj_organizador = rs.getString(4);
+                proj_inicio = formatData(rs.getDate(5));
+                proj_fim = formatData(rs.getDate(6));
                 //valor, linha, coluna
                 table_Projetos.setValueAt(proj_id, i, 0);
                 table_Projetos.setValueAt(proj_nome, i, 1);
-                table_Projetos.setValueAt(proj_organizador, i, 2);
-                table_Projetos.setValueAt(proj_inicio, i, 3);
-                table_Projetos.setValueAt(proj_fim, i, 4);
+                //table_Projetos.setValueAt(proj_escola, i, 2);
+                table_Projetos.setValueAt(proj_organizador, i, 3);
+                table_Projetos.setValueAt(proj_inicio, i, 4);
                 i++;
 
             }

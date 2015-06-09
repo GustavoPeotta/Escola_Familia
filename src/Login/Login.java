@@ -112,7 +112,7 @@ public class Login extends javax.swing.JFrame {
             System.out.println("Conectado!");
             System.out.println("Rodando uma query contra o banco");
 
-            query = "SELECT * FROM LOGIN WHERE USR = '" + usuario_user + "' AND PWD = '" + usuario_senha + "'";
+            query = "SELECT * FROM COORDENADORES WHERE USR = '" + usuario_user + "' AND PWD = '" + usuario_senha + "'";
             System.out.println(query);
             ResultSet rs = db.executar(query);
 

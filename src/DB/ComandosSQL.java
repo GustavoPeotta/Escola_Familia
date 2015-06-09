@@ -381,7 +381,7 @@ public class ComandosSQL {
 
     public ResultSet getProj() {
         if (db.connect()) {
-            query = "SELECT P.ID ID, P.NOME NOME, U.NOME UNI, P.DATA_INICIO INI, P.DATA_FINAL FIM FROM PROJETOS P JOIN UNIVERSITARIOS U ON P.ID_ORGANIZADOR = U.ID";
+            query = "SELECT P.ID ID, P.NOME NOME, E.NOME ESCOLA, U.NOME UNI, P.DATA_INICIO INI, P.DATA_FINAL FIM FROM PROJETOS P JOIN UNIVERSITARIOS U ON P.ID_ORGANIZADOR = U.ID JOIN ESCOLAS E ON P.ID_ESCOLA = E.ID";
             rs = db.executar(query);
         }
         return rs;
@@ -413,7 +413,7 @@ public class ComandosSQL {
     
     public ResultSet getCoord() {
         if (db.connect()) {
-            query = "SELECT * FROM LOGIN";
+            query = "SELECT * FROM COORDENADORES";
             rs = db.executar(query);
         }
         return rs;
